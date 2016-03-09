@@ -1,0 +1,48 @@
+package org.bluebank.contract;
+
+message ValidateCardRequest {
+    optional string cardNumber = 1;
+    optional string transactionId = 2;
+    optional string id = 3;
+    optional string location = 4;
+    optional string bankName = 5;
+}
+
+message ValidatePinRequest {
+ optional string transactionId = 1;
+ optional string pin = 2;
+}
+
+message DepositRequest {
+ optional string transactionId = 1;
+ optional double amount = 2;
+}
+
+message WithdrawRequest {
+ optional string transactionId = 1;
+ optional double amount = 2;
+}
+
+message InquiryRequest {
+ optional string transactionId = 1;
+}
+
+message CardReadConfirmation {
+
+}
+
+message CardValidationStatus {
+    enum Status {
+        UNKNOWN = 0;
+        VALIDATED = 1;
+        WRONG_PIN = 2;
+        CARD_DISABLED = 3;
+    }
+
+    optional Status status = 1;
+    optional string reason = 2;
+}
+
+message Receipt {
+    repeated string data = 1;
+}
